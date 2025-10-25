@@ -1,0 +1,15 @@
+:root {
+  --primary-color: #007bff; /* Electric Blue */
+  --secondary-color: #0056b3; /* Darker Blue for hover */
+  --background-color: #ffffff; /* White */
+  --text-color: #333333; /* Dark Gray */
+  --muted: #6c757d; /* Muted text */
+  --font-family: "Poppins", sans-serif; /* Modern Font */
+  --font-size-base: 16px; /* Base Font Size */
+  --font-size-large: 1.25rem; /* Large Font Size */
+  --font-size-small: 0.875rem; /* Small Font Size */
+  --border-radius: 10px; /* Rounded Corners */
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle Box Shadow */
+  --box-shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.15); /* Hover Shadow */
+  --transition: all 0.3s ease; /* Smooth Transitions */
+}

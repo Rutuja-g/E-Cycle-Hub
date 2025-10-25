@@ -1,0 +1,12 @@
+:root {
+    --primary-color: #4CAF50; /* Green */
+    --secondary-color: #FF5722; /* Deep Orange */
+    --background-color: #F5F5F5; /* Light Grey */
+    --text-color: #333; /* Dark Text */
+    --font-family: 'Arial', sans-serif; /* Default Font */
+    --font-size-base: 16px; /* Base Font Size */
+    --font-size-large: 1.25rem; /* Large Font Size */
+    --font-size-small: 0.875rem; /* Small Font Size */
+    --border-radius: 5px; /* Border Radius for Buttons */
+    --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Box Shadow */
+}

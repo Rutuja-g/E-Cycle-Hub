@@ -1,0 +1,27 @@
+{
+  "name": "e-cycle-hub",
+  "version": "1.0.0",
+  "description": "A fully responsive e-commerce platform for selling electric bicycles.",
+  "main": "src/js/main.js",
+  "scripts": {
+    "start": "live-server public",
+    "build": "echo 'Build process can be defined here.'"
+  },
+  "keywords": [
+    "e-commerce",
+    "electric bicycles",
+    "responsive",
+    "frontend"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "live-server": "^1.2.1"
+  },
+  "devDependencies": {},
+  "homepage": "https://yourwebsite.com/e-cycle-hub",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/e-cycle-hub.git"
+  }
+}
