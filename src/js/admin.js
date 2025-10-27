@@ -3,20 +3,6 @@
 (function () {
   const PRODUCTS_STORAGE_KEY = "products";
 
-  // Duplicate utility functions from utils.js (messy)
-  function formatPrice(amount = 0) {
-    return Number(amount).toLocaleString(undefined, {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    });
-  }
-
-  function createElement(tag, className) {
-    const element = document.createElement(tag);
-    if (className) element.className = className;
-    return element;
-  }
-
   // Load products from localStorage or initialize with default data
 function loadProducts() {
   const storedProducts = localStorage.getItem("ecycle_products");
@@ -140,7 +126,7 @@ function displayProducts(products = null) {
     row.innerHTML = `
             <td>${product.id}</td>
             <td>${product.name}</td>
-            <td>$${product.price}</td>
+            <td>$${window.Utils.formatPrice(product.price)}</td>
             <td>${product.category}</td>
             <td><img src="${product.image}" alt="${product.name}"></td>
             <td>
@@ -172,7 +158,7 @@ function displayOrders(orders = null) {
             <td>${order.id}</td>
             <td>${order.name}</td>
             <td>${productsList}</td>
-            <td>$${order.total.toFixed(2)}</td>
+            <td>$${window.Utils.formatPrice(order.total)}</td>
             <td>${new Date(order.date).toLocaleDateString()}</td>
             <td class="${
               order.status === "completed"
@@ -586,7 +572,7 @@ function updateDashboardStats() {
   document.getElementById("total-messages").textContent = messages.length;
   document.getElementById(
     "total-revenue"
-  ).textContent = `$${totalRevenue.toFixed(2)}`;
+  ).textContent = `$${window.Utils.formatPrice(totalRevenue)}`;
 }
 
 // Initialize the admin panel
