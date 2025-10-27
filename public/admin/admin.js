@@ -400,10 +400,12 @@ function showTab(tabName) {
   buttons.forEach((button) => button.classList.remove("active"));
 
   // Show selected tab
-  document.getElementById(tabName + "-tab").classList.add("active");
+  const tabEl = document.getElementById(tabName + "-tab");
+  if (tabEl) tabEl.classList.add("active");
 
-  // Add active class to clicked button
-  event.target.classList.add("active");
+  // Add active class to the corresponding button (don't rely on a global event)
+  const button = document.querySelector(`.tab-button[data-tab="${tabName}"]`);
+  if (button) button.classList.add("active");
 }
 
 // Search functionality
@@ -587,8 +589,19 @@ function updateDashboardStats() {
   document.getElementById(
     "total-revenue"
   ).textContent = `$${totalRevenue.toFixed(2)}`;
-}
+// Initialize the admin panel
+// Expose functions used by inline HTML event handlers so they work from the DOM
+window.editProduct = editProduct;
+window.deleteProduct = deleteProduct;
+window.completeOrder = completeOrder;
+window.deleteOrder = deleteOrder;
+window.resolveMessage = resolveMessage;
+window.deleteMessage = deleteMessage;
+window.showAddProductModal = showAddProductModal;
+window.closeModal = closeModal;
+window.showTab = showTab;
 
+document.addEventListener("DOMContentLoaded", function () {
 // Initialize the admin panel
 document.addEventListener("DOMContentLoaded", function () {
   // Wait for components to load
