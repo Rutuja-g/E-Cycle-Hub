@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Panel - E-Cycle Hub</title>
     <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/variables.css" />
     <link rel="stylesheet" href="../css/main.css" />
@@ -163,11 +169,22 @@
     </main>
 
     <!-- Add Product Modal -->
-    <div id="productModal" class="modal">
+    <div
+      id="productModal"
+      class="modal"
+      role="dialog"
+      aria-labelledby="modalTitle"
+    >
       <div class="modal-content">
         <div class="modal-header">
           <h2 id="modalTitle">Add New Product</h2>
-          <button class="modal-close" onclick="closeModal()">&times;</button>
+          <button
+            class="modal-close"
+            onclick="closeModal()"
+            aria-label="Close add product modal"
+          >
+            &times;
+          </button>
         </div>
         <form id="productForm" class="modal-body">
           <div class="form-group">

@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>E-Cycle Hub - Shop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/variables.css" />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/auth.css" />
@@ -31,14 +37,24 @@
     </footer>
 
     <!-- Product Details Modal -->
-    <div id="productModal" class="modal">
+    <div
+      id="productModal"
+      class="modal"
+      role="dialog"
+      aria-labelledby="modalName"
+      aria-describedby="modalDescription"
+    >
       <div class="modal-content">
-        <span class="close">&times;</span>
+        <button class="close" aria-label="Close product modal">&times;</button>
         <div class="modal-body">
           <img id="modalImage" src="" alt="Product Image" />
           <h2 id="modalName"></h2>
           <p id="modalDescription"></p>
-          <button id="modalAddToCart" class="btn btn-primary">
+          <button
+            id="modalAddToCart"
+            class="btn btn-primary"
+            aria-label="Add this product to cart"
+          >
             Add to Cart
           </button>
         </div>

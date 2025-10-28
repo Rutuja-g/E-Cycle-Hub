@@ -1,32 +1,32 @@
 :root {
-  /* Enhanced Color Palette */
-  --primary-color: #007bff; /* Electric Blue */
-  --primary-hover: #0056b3; /* Darker Blue for hover */
-  --primary-light: #e3f2fd; /* Light Blue Background */
-  --primary-gradient: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
-  --secondary-color: #28a745; /* Success Green */
-  --secondary-hover: #218838; /* Darker Green */
-  --secondary-light: #e8f5e8; /* Light Green Background */
-  --secondary-gradient: linear-gradient(135deg, #28a745 0%, #218838 100%);
-  --accent-color: #ffc107; /* Warning Yellow */
-  --accent-hover: #e0a800; /* Darker Yellow */
-  --accent-light: #fff8e1; /* Light Yellow Background */
-  --danger-color: #dc3545; /* Danger Red */
-  --danger-hover: #c82333; /* Darker Red */
-  --danger-light: #fce4e4; /* Light Red Background */
+  /* Clean Modern Color Palette */
+  --primary-color: #2563eb; /* Strong Blue Accent */
+  --primary-hover: #1d4ed8; /* Darker Blue for hover */
+  --primary-light: #eff6ff; /* Light Blue Background */
+  --primary-gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  --secondary-color: #64748b; /* Muted Gray for secondary */
+  --secondary-hover: #475569; /* Darker Gray */
+  --secondary-light: #f8fafc; /* Light Gray Background */
+  --secondary-gradient: linear-gradient(135deg, #64748b 0%, #475569 100%);
+  --accent-color: #2563eb; /* Same as primary for consistency */
+  --accent-hover: #1d4ed8;
+  --accent-light: #eff6ff;
+  --danger-color: #ef4444; /* Modern Red */
+  --danger-hover: #dc2626; /* Darker Red */
+  --danger-light: #fef2f2; /* Light Red Background */
 
   /* Neutral Colors */
   --background-color: #ffffff; /* Pure White */
-  --background-gradient: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-  --surface-color: #f8f9fa; /* Light Gray Surface */
-  --surface-light: #f1f3f4; /* Very Light Surface */
+  --background-gradient: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+  --surface-color: #f9fafb; /* Light Gray Surface */
+  --surface-light: #f3f4f6; /* Very Light Surface */
   --card-color: #ffffff; /* Card Background */
-  --text-color: #212529; /* Dark Gray Text */
-  --text-muted: #6c757d; /* Muted Text */
-  --text-light: #868e96; /* Lighter Text */
-  --border-color: #dee2e6; /* Light Border */
-  --border-light: #f1f3f4; /* Very Light Border */
-  --border-focus: #007bff; /* Focus Border */
+  --text-color: #1f2937; /* Darker Gray Text for better contrast */
+  --text-muted: #6b7280; /* Muted Text */
+  --text-light: #9ca3af; /* Lighter Text */
+  --border-color: #e5e7eb; /* Light Border */
+  --border-light: #f3f4f6; /* Very Light Border */
+  --border-focus: #2563eb; /* Focus Border */
 
   /* Typography */
   --font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -99,7 +99,7 @@
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
   --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
-  --shadow-glow: 0 0 20px rgba(0, 123, 255, 0.3);
+  --shadow-glow: 0 0 20px rgba(37, 99, 235, 0.3);
 
   /* Transitions */
   --transition-fast: 150ms ease-in-out;

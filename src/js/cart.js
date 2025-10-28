@@ -57,7 +57,7 @@
       itemRow.dataset.id = item.id;
 
       const itemImage = createElement("img");
-      itemImage.src = item.image || "img/placeholder.png";
+      itemImage.src = item.image || "assets/images/logo.jpg";
       itemImage.alt = item.name || "Bike";
 
       const itemMeta = createElement("div", "item-meta");
