@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/variables.css" />
     <link rel="stylesheet" href="css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
   </head>
   <body>
     <header>
@@ -16,12 +20,12 @@
 
     <main class="main-content">
       <div class="container">
-        <h1>My Orders</h1>
-        <div id="orders-list"></div>
-        <div
-          id="no-orders"
-          style="display: none; text-align: center; padding: 2rem"
-        >
+        <h1 class="text-center">My Orders</h1>
+        <div class="orders-wrap">
+          <div id="orders-list" class="orders-list"></div>
+        </div>
+        <div id="no-orders" style="display: none">
+          <i class="fas fa-box-open"></i>
           <h2>No Orders Yet</h2>
           <p>
             You haven't placed any orders yet. Start shopping to see your orders
@@ -35,6 +39,23 @@
     <footer>
       <div id="footer"></div>
     </footer>
+
+    <!-- Order Details Modal -->
+    <div id="order-modal" class="modal">
+      <div class="modal-backdrop"></div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="modal-title">Order Details</h2>
+          <button class="modal-close">&times;</button>
+        </div>
+        <div class="modal-body" id="modal-body">
+          <!-- Order details will be populated here -->
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary modal-close-btn">Close</button>
+        </div>
+      </div>
+    </div>
 
     <script src="../src/js/components.js"></script>
     <script src="../src/js/auth.js"></script>

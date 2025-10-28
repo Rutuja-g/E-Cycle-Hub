@@ -74,7 +74,7 @@
     // Populate the page
     const imgEl = document.getElementById("productImage");
     if (imgEl) {
-      imgEl.src = product.image || "img/placeholder.png";
+      imgEl.src = product.image || "assets/images/logo.jpg";
       imgEl.alt = product.name || "Product Image";
     }
     const nameEl = document.getElementById("productName");

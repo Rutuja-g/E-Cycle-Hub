@@ -9,14 +9,14 @@ function loadProducts() {
   if (storedProducts) {
     return JSON.parse(storedProducts);
   } else {
-    // Load initial products from JSON file (simulated)
+// Load initial products from JSON file (simulated)
     const initialProducts = [
       {
         id: 1,
         name: "EcoRide 3000",
         price: 1200,
         category: "Mountain",
-        image: "../assets/images/ecoride3000.jpg",
+        image: "assets/images/ecoride3000.jfif",
         description:
           "The EcoRide 3000 is a powerful electric mountain bike designed for off-road adventures. With a robust frame and high-capacity battery, it can tackle any terrain.",
       },
@@ -25,7 +25,7 @@ function loadProducts() {
         name: "City Cruiser",
         price: 900,
         category: "City",
-        image: "../assets/images/citycruiser.jpg",
+        image: "assets/images/citycruiser.jfif",
         description:
           "The City Cruiser is perfect for urban commuting. Its lightweight design and smooth ride make it ideal for navigating city streets.",
       },
@@ -34,7 +34,7 @@ function loadProducts() {
         name: "Speedster Pro",
         price: 1500,
         category: "Road",
-        image: "../assets/images/speedsterpro.jpg",
+        image: "assets/images/speedsterpro.jfif",
         description:
           "The Speedster Pro is built for speed and performance. With advanced aerodynamics and a powerful motor, it's perfect for road racing.",
       },
@@ -43,7 +43,7 @@ function loadProducts() {
         name: "Family E-Bike",
         price: 1100,
         category: "Family",
-        image: "../assets/images/familyebike.jpg",
+        image: "assets/images/familyebike.jfif",
         description:
           "The Family E-Bike is designed for family outings. It features a sturdy frame and ample storage for all your essentials.",
       },
@@ -52,7 +52,7 @@ function loadProducts() {
         name: "Commuter X",
         price: 950,
         category: "Commuter",
-        image: "../assets/images/commuterx.jpg",
+        image: "assets/images/commuterx.jpg",
         description:
           "The Commuter X is an efficient electric bike for daily commuting. It offers a comfortable ride and easy handling.",
       },
