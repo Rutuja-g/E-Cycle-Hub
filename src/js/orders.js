@@ -319,7 +319,7 @@
     modal.addEventListener("click", closeModal);
 
     // Prevent closing when clicking inside the modal content
-    const innerModal = modal.querySelector(".modal");
+    const innerModal = modal.querySelector(".modal-content");
     innerModal.addEventListener("click", (e) => e.stopPropagation());
 
     // Close on Escape key

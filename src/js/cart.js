@@ -64,7 +64,7 @@
       const itemTitle = createElement("h3");
       itemTitle.textContent = item.name;
       const itemPrice = createElement("p", "price");
-      itemPrice.textContent = `$${formatPrice(item.price)}`;
+      itemPrice.textContent = `$${formatPrice(item.price)} each`;
 
       const quantityControls = createElement("div", "quantity-controls");
       const decreaseBtn = createElement("button", "btn-quantity");
@@ -80,13 +80,20 @@
       quantityControls.appendChild(quantitySpan);
       quantityControls.appendChild(increaseBtn);
 
+      const itemTotal = createElement("p", "item-total");
+      itemTotal.textContent = `Total: $${formatPrice(
+        item.price * (item.quantity || 1)
+      )}`;
+
       const removeBtn = createElement("button", "btn-remove");
       removeBtn.dataset.action = "remove";
-      removeBtn.textContent = "Remove";
+      removeBtn.innerHTML = '<i class="fas fa-trash"></i>';
+      removeBtn.setAttribute("aria-label", "Remove item");
 
       itemMeta.appendChild(itemTitle);
       itemMeta.appendChild(itemPrice);
       itemMeta.appendChild(quantityControls);
+      itemMeta.appendChild(itemTotal);
       itemMeta.appendChild(removeBtn);
 
       itemRow.appendChild(itemImage);
@@ -141,6 +148,7 @@
 
       saveCart(cart);
       renderCart();
+      showToast("Cart updated!", 1500);
     });
 
     // Checkout button handler
