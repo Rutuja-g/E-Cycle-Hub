@@ -316,9 +316,11 @@
     });
 
     // Close on backdrop click
-    modal
-      .querySelector(".modal-backdrop")
-      .addEventListener("click", closeModal);
+    modal.addEventListener("click", closeModal);
+
+    // Prevent closing when clicking inside the modal content
+    const innerModal = modal.querySelector(".modal");
+    innerModal.addEventListener("click", (e) => e.stopPropagation());
 
     // Close on Escape key
     document.addEventListener("keydown", handleEscape);
