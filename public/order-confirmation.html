@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Confirmation - E-Cycle Hub</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div id="header"></div>
+    </header>
+
+    <main class="order-confirmation-page">
+      <div class="container">
+        <div class="confirmation-card">
+          <div class="success-icon">
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <h1>Order Placed Successfully!</h1>
+          <p class="confirmation-message">
+            Thank you for your purchase. Your order is being processed. You'll
+            receive an email confirmation shortly.
+          </p>
+
+          <div class="order-details">
+            <div class="detail-row">
+              <span class="detail-label">Order ID:</span>
+              <span class="detail-value" id="order-id">Order #A1234</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Date:</span>
+              <span class="detail-value" id="order-date">January 15, 2024</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Payment Method:</span>
+              <span class="detail-value" id="payment-method"
+                >Cash on Delivery</span
+              >
+            </div>
+            <div class="detail-row total-row">
+              <span class="detail-label">Total Amount:</span>
+              <span class="detail-value" id="total-amount">$1,299.00</span>
+            </div>
+          </div>
+
+          <div class="ordered-products" id="ordered-products">
+            <!-- Products will be populated by JavaScript -->
+          </div>
+
+          <div class="confirmation-actions">
+            <button class="btn btn-primary track-order-btn">
+              <i class="fas fa-truck"></i>
+              Track Order
+            </button>
+            <button class="btn btn-secondary continue-shopping-btn">
+              <i class="fas fa-shopping-bag"></i>
+              Continue Shopping
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div id="footer"></div>
+    </footer>
+
+    <script src="../src/js/components.js"></script>
+    <script src="../src/js/utils.js"></script>
+    <script src="../src/js/order-confirmation.js"></script>
+  </body>
+</html>

@@ -40,13 +40,17 @@
   function renderOrderSummary() {
     const cart = getCart();
     const orderItemsContainer = document.getElementById("order-items");
+    const subtotalPriceElement = document.getElementById("subtotal-price");
+    const taxPriceElement = document.getElementById("tax-price");
     const totalPriceElement = document.getElementById("total-price");
 
     orderItemsContainer.innerHTML = "";
-    let total = 0;
+    let subtotal = 0;
 
     if (cart.length === 0) {
       orderItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+      subtotalPriceElement.textContent = "0.00";
+      taxPriceElement.textContent = "0.00";
       totalPriceElement.textContent = "0.00";
       return;
     }
@@ -55,13 +59,28 @@
       const itemElement = document.createElement("div");
       itemElement.className = "order-item";
       itemElement.innerHTML = `
-        <p>${item.name} (x${item.quantity})</p>
-        <p>$${formatPrice(item.price * item.quantity)}</p>
+        <div class="item-image">
+          <img src="${item.image || "assets/images/logo.jpg"}" alt="${
+        item.name
+      }" />
+        </div>
+        <div class="item-details">
+          <h4>${item.name}</h4>
+          <p>Quantity: ${item.quantity}</p>
+        </div>
+        <div class="item-price">
+          $${formatPrice(item.price * item.quantity)}
+        </div>
       `;
       orderItemsContainer.appendChild(itemElement);
-      total += item.price * item.quantity;
+      subtotal += item.price * item.quantity;
     });
 
+    const tax = subtotal * 0.1; // 10% tax placeholder
+    const total = subtotal + tax;
+
+    subtotalPriceElement.textContent = formatPrice(subtotal);
+    taxPriceElement.textContent = formatPrice(tax);
     totalPriceElement.textContent = formatPrice(total);
   }
 
@@ -152,10 +171,8 @@
     // Clear cart
     saveCart([]);
 
-    // Show success message
-    document.getElementById("checkout-form").style.display = "none";
-    document.querySelector(".order-summary").style.display = "none";
-    document.getElementById("success-message").style.display = "block";
+    // Redirect to order confirmation page
+    window.location.href = "order-confirmation.html";
   }
 
   // Initialize checkout functionality
