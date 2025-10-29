@@ -7,7 +7,39 @@
   let filteredProducts = [];
 
   // Use shared utils
-  const { debounce, formatPrice, createElement } = Utils;
+  const { debounce, formatPrice, createElement, getCart, saveCart, showToast } =
+    Utils;
+
+  // Global addToCart function for shop page
+  window.addToCart = function (productId) {
+    const products = JSON.parse(
+      localStorage.getItem("ecycle_products") || "[]"
+    );
+    const product = products.find((p) => String(p.id) === String(productId));
+    if (!product) {
+      showToast("Product not found!", 3000);
+      return;
+    }
+
+    const cart = getCart();
+    const existingIndex = cart.findIndex(
+      (item) => String(item.id) === String(productId)
+    );
+    if (existingIndex >= 0) {
+      cart[existingIndex].quantity = (cart[existingIndex].quantity || 1) + 1;
+    } else {
+      cart.push({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        quantity: 1,
+      });
+    }
+    saveCart(cart);
+    showToast("Added to cart!");
+    window.location.href = "cart.html";
+  };
 
   // Load products from localStorage or fetch from JSON
   async function loadProducts() {
