@@ -55,7 +55,7 @@
       }
 
       // Fetch from JSON file
-      const response = await fetch("./assets/data/products.json");
+      const response = await fetch("/assets/data/products.json");
       if (!response.ok) {
         throw new Error(`Failed to fetch products: ${response.status}`);
       }

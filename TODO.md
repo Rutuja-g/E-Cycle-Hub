@@ -1,1 +1,4 @@
-- [x] Add 'Track Order' link to header navigation in public/components/header.html
+- [x] Fix paths in HTML files: Replace ../src/js/ with /src/js/ in all public/\*.html and public/admin/admin.html
+- [x] Fix paths in admin.html: Replace ../css/ with /css/
+- [x] Fix fetch paths in JS files: In product-details.js, change fetch("assets/data/products.json") to fetch("/assets/data/products.json")
+- [x] Fix fetch paths in components.js: Change fetch("components/header.html") and fetch("components/footer.html") to absolute paths /components/header.html and /components/footer.html
