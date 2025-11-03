@@ -21,11 +21,11 @@
     const footerElement = document.getElementById("footer");
 
     if (headerElement) {
-      loadComponent("/components/header.html", headerElement);
+      loadComponent("./components/header.html", headerElement);
     }
 
     if (footerElement) {
-      loadComponent("/components/footer.html", footerElement);
+      loadComponent("./components/footer.html", footerElement);
     }
   });
 })();
