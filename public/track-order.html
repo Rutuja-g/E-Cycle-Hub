@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Track Your Order - E-Cycle Hub</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/variables.css" />
-    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/variables.css" />
+    <link rel="stylesheet" href="./css/main.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -21,90 +21,93 @@
     <main class="main-content">
       <div class="container">
         <div class="track-order-container">
-          <div class="track-order-card">
-            <div class="track-order-header">
-              <h1>Track Your Order</h1>
-              <p>
-                Enter your Order ID and Email to check the current status of
-                your order.
-              </p>
+          <!-- Header Section -->
+          <div class="track-order-header">
+            <h1>Track Your Order</h1>
+            <p>
+              View your latest delivery updates and order status in real time.
+            </p>
+          </div>
+
+          <!-- Orders List Section -->
+          <div id="orders-list" class="orders-list">
+            <!-- Order cards will be dynamically inserted here -->
+          </div>
+
+          <!-- No Orders Section -->
+          <div id="no-orders" class="no-orders-section d-none">
+            <div class="no-orders-card">
+              <i class="fas fa-box-open"></i>
+              <h3>You haven't selected any order to track yet.</h3>
+              <p>Go to your orders page to select an order to track.</p>
+              <a href="./orders.html" class="btn btn-primary">
+                <i class="fas fa-list"></i>
+                Go to My Orders
+              </a>
+            </div>
+          </div>
+
+          <!-- Order Details Modal -->
+          <div id="track-modal" class="modal-backdrop d-none">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2 id="modal-title">Order Progress</h2>
+                <button class="modal-close">&times;</button>
+              </div>
+              <div class="modal-body" id="modal-body">
+                <!-- Order details and progress will be populated here -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Order Details Section (hidden, used for reference) -->
+          <div id="order-details" class="order-details-section d-none">
+            <div class="order-summary-card">
+              <div class="order-header-info">
+                <div class="order-id-date">
+                  <h2 id="display-order-id">Order #ECY123456</h2>
+                  <p id="display-order-date">Ordered on: January 15, 2024</p>
+                </div>
+                <div class="order-total">
+                  <span class="total-label">Total:</span>
+                  <span id="display-total-amount" class="total-amount"
+                    >$299.99</span
+                  >
+                </div>
+              </div>
+
+              <!-- Products List -->
+              <div class="products-section">
+                <h3>Products</h3>
+                <div id="products-list" class="products-list">
+                  <!-- Products will be dynamically inserted here -->
+                </div>
+              </div>
+
+              <!-- Estimated Delivery -->
+              <div class="delivery-info">
+                <div class="delivery-item">
+                  <i class="fas fa-calendar-alt"></i>
+                  <div>
+                    <span class="delivery-label">Estimated Delivery</span>
+                    <span id="estimated-delivery" class="delivery-date"
+                      >January 20, 2024</span
+                    >
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <form id="track-order-form" class="track-order-form">
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="order-id">Order ID</label>
-                  <input
-                    type="text"
-                    id="order-id"
-                    name="orderId"
-                    placeholder="e.g., E001"
-                    required
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="email">Email Address</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="your@email.com"
-                    required
-                  />
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary track-btn">
-                <i class="fas fa-search"></i>
-                Track Order
-              </button>
-            </form>
-
-            <div id="order-details" class="order-details d-none">
-              <div class="order-info-card">
-                <h2>Order Information</h2>
-                <div class="order-info-grid">
-                  <div class="info-item">
-                    <span class="label">Order ID:</span>
-                    <span id="display-order-id" class="value"></span>
-                  </div>
-                  <div class="info-item">
-                    <span class="label">Customer Name:</span>
-                    <span id="display-customer-name" class="value"></span>
-                  </div>
-                  <div class="info-item">
-                    <span class="label">Order Date:</span>
-                    <span id="display-order-date" class="value"></span>
-                  </div>
-                  <div class="info-item">
-                    <span class="label">Total Amount:</span>
-                    <span id="display-total-amount" class="value"></span>
-                  </div>
-                  <div class="info-item">
-                    <span class="label">Payment Method:</span>
-                    <span id="display-payment-method" class="value"></span>
-                  </div>
-                  <div class="info-item full-width">
-                    <span class="label">Delivery Address:</span>
-                    <span id="display-delivery-address" class="value"></span>
-                  </div>
-                </div>
-              </div>
-
+            <!-- Progress Tracker -->
+            <div class="progress-tracker-card">
+              <h3>Order Status</h3>
               <div class="progress-tracker">
-                <h3>Order Progress</h3>
                 <div class="progress-steps">
-                  <div class="step" data-step="ordered">
+                  <div class="step" data-step="confirmed">
                     <div class="step-icon">
-                      <i class="fas fa-shopping-cart"></i>
+                      <i class="fas fa-check-circle"></i>
                     </div>
-                    <span class="step-label">Ordered</span>
-                  </div>
-                  <div class="step-connector"></div>
-                  <div class="step" data-step="processed">
-                    <div class="step-icon">
-                      <i class="fas fa-cog"></i>
-                    </div>
-                    <span class="step-label">Processed</span>
+                    <span class="step-label">Confirmed</span>
                   </div>
                   <div class="step-connector"></div>
                   <div class="step" data-step="shipped">
@@ -112,6 +115,13 @@
                       <i class="fas fa-truck"></i>
                     </div>
                     <span class="step-label">Shipped</span>
+                  </div>
+                  <div class="step-connector"></div>
+                  <div class="step" data-step="out-for-delivery">
+                    <div class="step-icon">
+                      <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <span class="step-label">Out for Delivery</span>
                   </div>
                   <div class="step-connector"></div>
                   <div class="step" data-step="delivered">
@@ -122,31 +132,19 @@
                   </div>
                 </div>
               </div>
-
-              <div class="order-actions">
-                <a href="shop.html" class="btn btn-primary">
-                  <i class="fas fa-shopping-bag"></i>
-                  Continue Shopping
-                </a>
-                <button id="cancel-order-btn" class="btn btn-danger">
-                  <i class="fas fa-times"></i>
-                  Cancel Order
-                </button>
-              </div>
             </div>
+          </div>
 
-            <div id="error-message" class="error-message d-none">
+          <!-- Error Section -->
+          <div id="error-message" class="error-section d-none">
+            <div class="error-card">
               <i class="fas fa-exclamation-triangle"></i>
-              <p>
-                Order not found. Please check your Order ID and Email address.
-              </p>
-              <button
-                class="btn btn-secondary"
-                onclick="window.location.href='order-confirmation.html'"
-              >
+              <h3>We couldn't find that order</h3>
+              <p>Please double-check your Order ID or contact support.</p>
+              <a href="./orders.html" class="btn btn-secondary">
                 <i class="fas fa-arrow-left"></i>
-                Go Back
-              </button>
+                Go Back to Orders
+              </a>
             </div>
           </div>
         </div>
@@ -157,27 +155,7 @@
       <div id="footer"></div>
     </footer>
 
-    <!-- Cancel Order Confirmation Modal -->
-    <div id="cancel-modal" class="modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2>Confirm Cancellation</h2>
-        </div>
-        <div class="modal-body">
-          <p>Are you sure you want to cancel this order?</p>
-        </div>
-        <div class="modal-footer">
-          <button id="confirm-cancel" class="btn btn-danger">
-            Yes, Cancel Order
-          </button>
-          <button id="cancel-cancel" class="btn btn-secondary">
-            No, Keep Order
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <script src="/src/js/components.js"></script>
-    <script src="/src/js/track-order.js"></script>
+    <script src="./js/components.js"></script>
+    <script src="./js/track-order.js"></script>
   </body>
 </html>

@@ -149,6 +149,12 @@
               <i class="fas fa-eye"></i>
               View Details
             </button>
+            <button class="btn btn-secondary track-order" data-order-id="${
+              order.id
+            }">
+              <i class="fas fa-truck"></i>
+              Track Order
+            </button>
             ${
               order.status === "pending"
                 ? `<button class="btn btn-danger cancel-order" data-order-id="${order.id}">
@@ -168,6 +174,16 @@
       btn.addEventListener("click", function () {
         const orderId = this.getAttribute("data-order-id");
         viewOrderDetails(orderId);
+      });
+    });
+
+    // Add event listeners for track order buttons
+    document.querySelectorAll(".track-order").forEach((btn) => {
+      btn.addEventListener("click", function () {
+        const orderId = this.getAttribute("data-order-id");
+        // Save selected order to localStorage and redirect
+        localStorage.setItem("selectedOrder", orderId);
+        window.location.href = "track-order.html";
       });
     });
 
