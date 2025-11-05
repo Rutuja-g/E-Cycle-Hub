@@ -343,8 +343,8 @@ a:hover {
   width: 100%;
   background: linear-gradient(
     135deg,
-    rgba(0, 123, 255, 0.1) 0%,
-    rgba(40, 167, 69, 0.1) 100%
+    rgba(var(--primary-color-rgb), 0.1) 0%,
+    rgba(var(--green-rgb), 0.1) 100%
   );
   animation: fadeIn 1s ease-out;
   margin-top: 80px;
@@ -360,8 +360,8 @@ a:hover {
   bottom: 0;
   background: linear-gradient(
     135deg,
-    rgba(0, 123, 255, 0.05) 0%,
-    rgba(40, 167, 69, 0.05) 100%
+    rgba(var(--primary-color-rgb), 0.05) 0%,
+    rgba(var(--green-rgb), 0.05) 100%
   );
   z-index: 1;
 }
@@ -401,8 +401,8 @@ a:hover {
   bottom: 0;
   background: linear-gradient(
     135deg,
-    rgba(0, 123, 255, 0.3) 0%,
-    rgba(40, 167, 69, 0.3) 100%
+    rgba(var(--primary-color-rgb), 0.3) 0%,
+    rgba(var(--green-rgb), 0.3) 100%
   );
   z-index: 1;
 }
@@ -471,7 +471,7 @@ a:hover {
 .btn:focus {
   outline: 2px solid var(--border-focus);
   outline-offset: 2px;
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+  box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.1);
 }
 
 .btn:disabled {
@@ -605,7 +605,7 @@ a:hover {
 /* Responsive styles */
 
 /* Tablet and smaller screens */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   body {
     font-size: 0.95rem;
   }

@@ -1,6 +1,7 @@
 :root {
   /* Clean Modern Color Palette */
   --primary-color: #2563eb; /* Strong Blue Accent */
+  --primary-color-rgb: 37, 99, 235; /* RGB for rgba() usage */
   --primary-hover: #1d4ed8; /* Darker Blue for hover */
   --primary-light: #eff6ff; /* Light Blue Background */
   --primary-gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
@@ -11,6 +12,7 @@
   --accent-color: #2563eb; /* Same as primary for consistency */
   --accent-hover: #1d4ed8;
   --accent-light: #eff6ff;
+  --green-rgb: 40, 167, 69; /* RGB for green in gradients */
   --danger-color: #ef4444; /* Modern Red */
   --danger-hover: #dc2626; /* Darker Red */
   --danger-light: #fef2f2; /* Light Red Background */
@@ -114,4 +116,9 @@
   --z-modal: 1050;
   --z-popover: 1060;
   --z-tooltip: 1070;
+
+  /* Footer */
+  --footer-bg: #f9fafb; /* Light gray background matching surface-color */
+  --footer-text: #1f2937; /* Dark text for contrast */
+  --footer-muted: #6b7280; /* Muted text */
 }
