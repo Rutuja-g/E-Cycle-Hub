@@ -19,7 +19,11 @@ A responsive e-commerce web app for electric bicycles, built with HTML, CSS, and
 - localStorage for data persistence
 - Chart.js for admin analytics
 
-## How to Run Locally
+## Live Demo
+
+View the live demo at [https://ecycle-hub.netlify.app](https://ecycle-hub.netlify.app)
+
+## Setup Instructions
 
 Run `python -m http.server 8000` in the project root and open `http://localhost:8000/public/index.html` in your browser.
 
