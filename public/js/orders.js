@@ -54,7 +54,7 @@
 
   // Function to format order ID for display
   function formatOrderId(id) {
-    return `Order #E${String(id).padStart(3, "0")}`;
+    return `Order #ECY${String(id).padStart(6, "0")}`;
   }
 
   function renderOrders() {
@@ -183,7 +183,7 @@
         const orderId = this.getAttribute("data-order-id");
         // Save selected order to localStorage and redirect
         localStorage.setItem("selectedOrder", orderId);
-        window.location.href = "track-order.html";
+        window.location.href = "./track-order.html";
       });
     });
 

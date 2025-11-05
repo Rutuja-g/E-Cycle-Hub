@@ -29,7 +29,7 @@
 
   // Format order ID
   function formatOrderId(id) {
-    return `Order #E${String(id).padStart(3, "0")}`;
+    return `Order #ECY${String(id).padStart(6, "0")}`;
   }
 
   // Get the latest order for the current user
@@ -104,7 +104,7 @@
     // Add button event listeners
     document.querySelector(".track-order-btn").addEventListener("click", () => {
       const orderId = formatOrderId(order.id).replace("Order #", "");
-      window.location.href = `track-order.html?orderId=${orderId}`;
+      window.location.href = `./track-order.html?orderId=${orderId}`;
     });
 
     document

@@ -1,48 +1,10 @@
 (function () {
   const ORDERS_KEY = "orders";
 
-  // Mock data for testing when no orders exist in localStorage
-  const mockOrders = [
-    {
-      id: 123456,
-      date: "2024-01-15T10:30:00Z",
-      total: 299.99,
-      status: "shipped",
-      items: [
-        {
-          id: 1,
-          name: "Wireless Bluetooth Headphones",
-          price: 149.99,
-          quantity: 1,
-          image: "./assets/images/headphones.jpg",
-        },
-        {
-          id: 2,
-          name: "Portable Charger 10000mAh",
-          price: 29.99,
-          quantity: 2,
-          image: "./assets/images/charger.jpg",
-        },
-      ],
-      deliveryAddress: "123 Main St, City, State 12345",
-    },
-    {
-      id: 789012,
-      date: "2024-01-10T14:20:00Z",
-      total: 89.99,
-      status: "delivered",
-      items: [
-        {
-          id: 3,
-          name: "USB-C Cable 6ft",
-          price: 12.99,
-          quantity: 1,
-          image: "./assets/images/cable.jpg",
-        },
-      ],
-      deliveryAddress: "456 Oak Ave, Town, State 67890",
-    },
-  ];
+  function getCurrentUser() {
+    const user = localStorage.getItem("ecycle_current_user");
+    return user ? JSON.parse(user) : null;
+  }
 
   function getOrders() {
     try {
@@ -52,12 +14,6 @@
       if (!Array.isArray(orders)) {
         console.warn("Orders data is not an array, resetting to empty.");
         orders = [];
-      }
-
-      // If no orders exist, use mock data for testing
-      if (orders.length === 0) {
-        console.log("No orders found, using mock data for testing");
-        orders = mockOrders;
       }
 
       // Add default status to existing orders
@@ -70,205 +26,8 @@
       return orders;
     } catch (e) {
       console.error("Failed to parse orders from localStorage:", e);
-      return mockOrders; // Fallback to mock data
+      return [];
     }
-  }
-
-  function renderOrderCards() {
-    const orders = getOrders();
-    const ordersList = document.getElementById("orders-list");
-    const noOrders = document.getElementById("no-orders");
-
-    ordersList.innerHTML = "";
-
-    if (orders.length === 0) {
-      noOrders.classList.remove("d-none");
-      return;
-    }
-
-    noOrders.classList.add("d-none");
-
-    // Sort orders by date (newest first)
-    orders.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-    orders.forEach((order) => {
-      const orderCard = document.createElement("div");
-      orderCard.className = "order-card";
-
-      // Determine status display
-      let statusClass, statusText;
-      switch (order.status) {
-        case "confirmed":
-          statusClass = "confirmed";
-          statusText = "Confirmed";
-          break;
-        case "shipped":
-          statusClass = "shipped";
-          statusText = "Shipped";
-          break;
-        case "out-for-delivery":
-          statusClass = "out-for-delivery";
-          statusText = "Out for Delivery";
-          break;
-        case "delivered":
-          statusClass = "delivered";
-          statusText = "Delivered";
-          break;
-        default:
-          statusClass = "confirmed";
-          statusText = "Confirmed";
-      }
-
-      orderCard.innerHTML = `
-        <div class="order-header">
-          <span>Order #${order.id}</span>
-          <span class="order-meta">${new Date(
-            order.date
-          ).toLocaleDateString()}</span>
-        </div>
-        <div class="order-summary">
-          <span><strong>Total:</strong> $${formatPrice(order.total)}</span>
-        </div>
-        <div class="order-footer">
-          <span class="order-status ${statusClass}">${statusText}</span>
-          <button class="btn btn-primary track-progress-btn" data-order-id="${
-            order.id
-          }">
-            <i class="fas fa-eye"></i>
-            Track Progress
-          </button>
-        </div>
-      `;
-
-      ordersList.appendChild(orderCard);
-    });
-
-    // Add event listeners for track progress buttons
-    document.querySelectorAll(".track-progress-btn").forEach((btn) => {
-      btn.addEventListener("click", function () {
-        const orderId = parseInt(this.getAttribute("data-order-id"));
-        handleTrackProgress(orderId);
-      });
-    });
-  }
-
-  function handleTrackProgress(orderId) {
-    const orders = getOrders();
-    const order = orders.find((o) => o.id === orderId);
-
-    if (!order) {
-      alert("Order not found.");
-      return;
-    }
-
-    // Calculate estimated delivery date
-    const orderDate = new Date(order.date);
-    const deliveryDate = new Date(orderDate);
-    deliveryDate.setDate(orderDate.getDate() + 5); // Assume 5 days delivery
-
-    const modalTitle = document.getElementById("modal-title");
-    const modalBody = document.getElementById("modal-body");
-
-    modalTitle.textContent = `Order #${order.id} Progress`;
-
-    modalBody.innerHTML = `
-      <div class="order-progress-modal">
-        <div class="order-info">
-          <div class="info-row">
-            <i class="fas fa-calendar-alt"></i>
-            <span><strong>Order Date:</strong> ${new Date(
-              order.date
-            ).toLocaleDateString()}</span>
-          </div>
-          <div class="info-row">
-            <i class="fas fa-truck"></i>
-            <span><strong>Estimated Delivery:</strong> ${deliveryDate.toLocaleDateString()}</span>
-          </div>
-          <div class="info-row">
-            <i class="fas fa-info-circle"></i>
-            <span><strong>Total:</strong> $${formatPrice(order.total)}</span>
-          </div>
-        </div>
-        <div class="products-summary">
-          <h3><i class="fas fa-shopping-bag"></i> Products</h3>
-          ${order.items
-            .map(
-              (item) => `
-            <div class="product-summary-item">
-              <div class="product-info">
-                <h4>${item.name}</h4>
-                <p>Quantity: ${item.quantity}</p>
-              </div>
-              <div class="product-price">$${formatPrice(
-                item.price * item.quantity
-              )}</div>
-            </div>
-          `
-            )
-            .join("")}
-        </div>
-        <div class="progress-tracker-modal">
-          <h3>Order Status</h3>
-          <div class="progress-tracker">
-            <div class="progress-steps">
-              <div class="step" data-step="confirmed">
-                <div class="step-icon">
-                  <i class="fas fa-check-circle"></i>
-                </div>
-                <span class="step-label">Order Confirmed</span>
-              </div>
-              <div class="step-connector"></div>
-              <div class="step" data-step="shipped">
-                <div class="step-icon">
-                  <i class="fas fa-truck"></i>
-                </div>
-                <span class="step-label">Shipped</span>
-              </div>
-              <div class="step-connector"></div>
-              <div class="step" data-step="out-for-delivery">
-                <div class="step-icon">
-                  <i class="fas fa-shipping-fast"></i>
-                </div>
-                <span class="step-label">Out for Delivery</span>
-              </div>
-              <div class="step-connector"></div>
-              <div class="step" data-step="delivered">
-                <div class="step-icon">
-                  <i class="fas fa-box-open"></i>
-                </div>
-                <span class="step-label">Delivered</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-
-    // Update progress tracker
-    updateProgressTracker(order.status);
-
-    // Show modal
-    const modal = document.getElementById("track-modal");
-    modal.classList.remove("d-none");
-    modal.style.opacity = "0";
-    modal.style.transform = "scale(0.9)";
-    document.body.style.overflow = "hidden";
-
-    // Trigger fade-in animation
-    setTimeout(() => {
-      modal.style.opacity = "1";
-      modal.style.transform = "scale(1)";
-    }, 10);
-  }
-
-  function closeModal() {
-    const modal = document.getElementById("track-modal");
-    modal.style.opacity = "0";
-    modal.style.transform = "scale(0.9)";
-    setTimeout(() => {
-      modal.classList.add("d-none");
-      document.body.style.overflow = "";
-    }, 300);
   }
 
   function formatPrice(n = 0) {
@@ -485,44 +244,43 @@
   }
 
   document.addEventListener("DOMContentLoaded", function () {
-    // Check for selected order from localStorage
+    const user = getCurrentUser();
+    if (!user) {
+      window.location.href = "login.html";
+      return;
+    }
+
+    // Check for selected order from localStorage (from orders.html)
     const selectedOrderId = localStorage.getItem("selectedOrder");
     if (selectedOrderId) {
-      // Remove from localStorage to avoid showing it again on refresh
       localStorage.removeItem("selectedOrder");
-      // Find the order and show modal directly
       const orders = getOrders();
-      const order = orders.find((o) => String(o.id) === selectedOrderId);
+      const order = orders.find(
+        (o) => String(o.id) === selectedOrderId && o.userEmail === user.email
+      );
       if (order) {
-        handleTrackProgress(parseInt(selectedOrderId));
-        return; // Skip rendering order cards
+        displayOrderDetails(order);
+        return;
       }
     }
 
-    // If no selected order, render the order cards list
-    renderOrderCards();
-
-    // Add modal close functionality
-    const modal = document.getElementById("track-modal");
-    if (modal) {
-      const closeBtn = modal.querySelector(".modal-close");
-      if (closeBtn) {
-        closeBtn.addEventListener("click", closeModal);
+    // Check for orderId from URL (from order-confirmation.html)
+    const orderIdParam = getUrlParameter("orderId");
+    if (orderIdParam) {
+      const orderId = validateOrderId(orderIdParam);
+      if (orderId) {
+        const orders = getOrders();
+        const order = orders.find(
+          (o) => String(o.id) === orderId && o.userEmail === user.email
+        );
+        if (order) {
+          displayOrderDetails(order);
+          return;
+        }
       }
-
-      // Close on backdrop click
-      modal.addEventListener("click", (e) => {
-        if (e.target === modal) {
-          closeModal();
-        }
-      });
-
-      // Close on Escape key
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && !modal.classList.contains("d-none")) {
-          closeModal();
-        }
-      });
     }
+
+    // If no specific order to track, show no-orders message
+    document.getElementById("no-orders").classList.remove("d-none");
   });
 })();
