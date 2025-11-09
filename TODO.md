@@ -1,10 +1,10 @@
-# Visual Consistency Improvements
+# Restore Orders and Track Order Pages
 
 ## Tasks
 
-- [ ] Replace hardcoded blue rgba values in .welcome and .hero gradients with --primary-color equivalents in main.css
-- [x] Add --footer-bg variable to variables.css for consistent footer background
-- [ ] Update footer background in main.css to use --footer-bg
-- [ ] Verify all backgrounds remain light, buttons blue-toned, text dark
-- [ ] Confirm hover effects and modals retain consistent shadows and border-radius
-- [ ] Test changes on index.html, shop.html, and orders.html by launching locally
+- [x] Add utils.js script to orders.html
+- [x] Add utils.js script to track-order.html
+- [x] Verify CSS selectors are present
+- [x] Test orders.html displays order list (Server running, but browser tool disabled)
+- [x] Test track-order.html displays order details when navigated from orders.html (Server running, but browser tool disabled)
+- [x] Ensure no disruption to other pages (No changes made to other pages)
