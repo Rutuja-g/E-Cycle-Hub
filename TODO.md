@@ -8,3 +8,7 @@
 - [x] Test orders.html displays order list (Server running, but browser tool disabled)
 - [x] Test track-order.html displays order details when navigated from orders.html (Server running, but browser tool disabled)
 - [x] Ensure no disruption to other pages (No changes made to other pages)
+
+git checkout main
+git merge updates
+git push origin main
