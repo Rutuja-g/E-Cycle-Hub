@@ -23,64 +23,6 @@ E-Cycle Hub is a fully responsive frontend-only e-commerce web application for s
 - **Development Server**: live-server for local development
 - **Build Tool**: None (static files)
 
-## Project Structure
-
-```
-E-Cycle-Hub/
-├── .github/
-│   └── copilot-instructions.md  # AI agent instructions
-├── public/
-│   ├── index.html               # Home page
-│   ├── products.html            # Product catalog
-│   ├── product.html             # Individual product details
-│   ├── cart.html                # Shopping cart
-│   ├── checkout.html            # Checkout process
-│   ├── orders.html              # User orders
-│   ├── track-order.html         # Order tracking
-│   ├── login.html               # User login
-│   ├── signup.html              # User registration
-│   ├── contact.html             # Contact form
-│   ├── about.html               # About page
-│   ├── shop.html                # Shop page
-│   ├── order-confirmation.html  # Order confirmation
-│   ├── admin/
-│   │   ├── admin.html           # Admin dashboard
-│   │   ├── admin.js             # Admin functionality
-│   │   └── components.js        # Admin components
-│   ├── assets/
-│   │   ├── images/              # Product and UI images
-│   │   ├── data/                # Static data files
-│   │   └── fonts/               # Custom fonts
-│   ├── components/
-│   │   ├── header.html          # Site header
-│   │   └── footer.html          # Site footer
-│   ├── css/
-│   │   ├── main.css             # Main styles
-│   │   ├── reset.css            # CSS reset
-│   │   ├── variables.css        # CSS variables
-│   │   ├── auth.css             # Authentication styles
-│   │   └── main_backup.css      # Backup styles
-│   └── js/
-│       ├── main.js              # Main application logic
-│       ├── store.js             # Data storage utilities
-│       ├── api.js               # Mock API layer
-│       ├── auth.js              # Authentication
-│       ├── cart.js              # Cart management
-│       ├── checkout.js          # Checkout logic
-│       ├── orders.js            # Orders management
-│       ├── track-order.js       # Order tracking
-│       ├── product-details.js   # Product details
-│       ├── contact.js           # Contact form
-│       ├── components.js        # Component utilities
-│       ├── admin.js             # Admin panel
-│       └── utils.js             # Utility functions
-├── .gitignore                   # Git ignore rules
-├── package.json                 # Project metadata and scripts
-├── package-lock.json            # Dependency lock file
-├── README.md                    # This file
-└── TODO.md                      # Task list
-```
-
 ## Installation
 
 1. Clone the repository:
@@ -130,18 +72,6 @@ Currently, no build process is defined. The app consists of static files ready f
 ## Live Demo
 
 View the live demo at [https://ecycle-hub.netlify.app](https://ecycle-hub.netlify.app)
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/your-feature`
-3. Commit changes: `git commit -am 'Add your feature'`
-4. Push to branch: `git push origin feature/your-feature`
-5. Submit a pull request
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Future Improvements
 
